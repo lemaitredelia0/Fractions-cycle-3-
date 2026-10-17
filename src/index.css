@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Fredoka', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Fredoka', cursive, system-ui, sans-serif;
+  }
+}
+
+/* Chunky 3D Arcade Buttons & Cards */
+.arcade-card-rose {
+  border: 3.5px solid #f43f5e;
+  box-shadow: 0 8px 0 #9f1239, 0 0 24px rgba(244, 63, 94, 0.25);
+}
+.arcade-card-rose:active {
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 #9f1239, 0 0 16px rgba(244, 63, 94, 0.25);
+}
+
+.arcade-card-cyan {
+  border: 3.5px solid #06b6d4;
+  box-shadow: 0 8px 0 #0e7490, 0 0 24px rgba(6, 182, 212, 0.25);
+}
+.arcade-card-cyan:active {
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 #0e7490, 0 0 16px rgba(6, 182, 212, 0.25);
+}
+
+.arcade-card-yellow {
+  border: 3.5px solid #eab308;
+  box-shadow: 0 8px 0 #a16207, 0 0 24px rgba(234, 179, 8, 0.25);
+}
+.arcade-card-yellow:active {
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 #a16207, 0 0 16px rgba(234, 179, 8, 0.25);
+}
+
+.arcade-card-purple {
+  border: 3.5px solid #a855f7;
+  box-shadow: 0 8px 0 #7e22ce, 0 0 24px rgba(168, 85, 247, 0.25);
+}
+.arcade-card-purple:active {
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 #7e22ce, 0 0 16px rgba(168, 85, 247, 0.25);
+}
+
+/* Big Central Cake Platter Frame */
+.cake-platter-frame {
+  border: 4px solid #334155;
+  box-shadow: 0 10px 0 #1e293b, 0 0 35px rgba(56, 189, 248, 0.15);
+}
+
+/* Addictive Arcade Background Animations */
+@keyframes float-bokeh {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-24px) scale(1.15);
+    opacity: 0.75;
+  }
+}
+
+@keyframes laser-glow {
+  0%, 100% {
+    opacity: 0.45;
+    filter: blur(40px) hue-rotate(0deg);
+  }
+  50% {
+    opacity: 0.75;
+    filter: blur(55px) hue-rotate(25deg);
+  }
+}
+
+.animate-float-bokeh {
+  animation: float-bokeh 5s ease-in-out infinite;
+}
+
+.animate-laser-glow {
+  animation: laser-glow 6s ease-in-out infinite;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "Fraction Rock - Le Jeu de Rythme des Fractions",
+  "description": "Jeu de rythme éducatif musical sur les fractions du CP à la 6e avec gâteaux, combos, profils et collection de rockstars pâtissières.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
