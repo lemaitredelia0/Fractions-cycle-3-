@@ -87,11 +87,13 @@ export const CakeCanvas: React.FC<CakeCanvasProps> = ({
   const numMulti = spec.multiCakes ? spec.multiCakes.length : 2;
   const isBar = spec.shape === 'bar';
 
+  const cakeGap = Math.max(52, Math.round(size * 0.40));
+
   // Height sizing for canvas: comparison & equivalence include cakes + badges + 2-line large explanation
   const canvasWidth = isComparison || isEquivalence
     ? Math.max(340, size * 2 + 50)
     : isMulti
-    ? size * numMulti + 16
+    ? size * numMulti + (numMulti - 1) * cakeGap + 20
     : isBar
     ? Math.max(360, size >= 240 ? size : size * 2.5)
     : size;
@@ -220,25 +222,27 @@ export const CakeCanvas: React.FC<CakeCanvasProps> = ({
 
       if (isMulti && spec.multiCakes) {
         const subSize = size;
-        const spacing = subSize + 16;
+        const cakeGap = Math.max(52, Math.round(subSize * 0.40));
+        const spacing = subSize + cakeGap;
+        const startX = 10 + subSize / 2;
         spec.multiCakes.forEach((subSpec, idx) => {
-          const cx = subSize / 2 + idx * spacing;
+          const cx = startX + idx * spacing;
           const cy = canvasHeight / 2;
           const glaze = subSpec.glaze || spec.glaze || 'strawberry';
           const colors = GLAZE_COLORS[glaze];
           const radius = Math.floor(subSize / 2) - 4;
           renderSingleRoundCake(ctx, subSpec, cx, cy, radius, colors, colorblindMode);
 
-          // Operator "+" between cakes
+          // Operator "+" between cakes with generous breathing room
           if (idx < spec.multiCakes!.length - 1) {
-            const plusX = cx + subSize / 2 + 8;
+            const plusX = cx + subSize / 2 + cakeGap / 2;
             ctx.save();
             ctx.fillStyle = '#facc15';
-            ctx.font = `bold ${Math.max(22, Math.floor(size * 0.28))}px sans-serif`;
+            ctx.font = `bold ${Math.max(26, Math.floor(subSize * 0.30))}px sans-serif`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
-            ctx.shadowBlur = 6;
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
+            ctx.shadowBlur = 8;
             ctx.fillText(spec.operator || '+', plusX, cy);
             ctx.restore();
           }
@@ -396,8 +400,8 @@ function renderAnimatedAdditionCakes(
   const radius = Math.floor(subSize / 2) - 8;
   const cy = Math.floor(subSize / 2) + 2;
   const cxCenter = Math.floor(width / 2);
-  const cx1 = Math.floor(subSize / 2) + 6;
-  const cx2 = width - Math.floor(subSize / 2) - 6;
+  const cx1 = 10 + Math.floor(subSize / 2);
+  const cx2 = width - 10 - Math.floor(subSize / 2);
 
   // Timeline Phases:
   // 0.00 -> 0.22: Separate (2 cakes side by side)

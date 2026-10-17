@@ -102,9 +102,10 @@ export const RhythmGame: React.FC<RhythmGameProps> = ({
         const numCakes = currentQuestion.visual?.multiCakes ? currentQuestion.visual.multiCakes.length : 2;
         const isComp = Boolean(currentQuestion.visual?.isComparison);
         const extraH = isComp || isEq ? 75 : 40;
-        const sizeByW = Math.floor((availW - (numCakes - 1) * 20) / numCakes);
+        const gapAllowance = (numCakes - 1) * (isComp || isEq ? 40 : 54) + 24;
+        const sizeByW = Math.floor((availW - gapAllowance) / numCakes);
         const sizeByH = Math.floor(availH - extraH);
-        setMaxCakeSize(Math.max(85, Math.min(sizeByW, sizeByH, isComp || isEq ? 130 : 155)));
+        setMaxCakeSize(Math.max(80, Math.min(sizeByW, sizeByH, isComp || isEq ? 130 : 150)));
       } else if (currentQuestion.visual?.shape === 'bar') {
         // Bande-gâteau : doit être longue horizontalement sans déborder verticalement
         const barWidth = Math.min(availW, 700);

@@ -596,6 +596,7 @@ function generateCM1Question(): Question {
         shape: 'round',
         totalParts: den,
         activeParts: den,
+        operator: '+',
         multiCakes: [
           { shape: 'round', totalParts: den, activeParts: den, isEqual: true, glaze },
           { shape: 'round', totalParts: den, activeParts: rem, isEqual: true, glaze },
