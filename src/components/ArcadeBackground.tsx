@@ -7,7 +7,7 @@ export const ArcadeBackground: React.FC = () => {
       <div
         className="absolute inset-0 bg-cover bg-center opacity-85 transition-opacity duration-700 scale-105"
         style={{
-          backgroundImage: `url('/src/assets/images/colorful_addictive_neon_stage_1791396853884.jpg')`,
+          backgroundImage: `url('/images/colorful_addictive_neon_stage_1791396853884.jpg')`,
         }}
       />
 

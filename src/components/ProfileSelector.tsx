@@ -74,13 +74,17 @@ export const ProfileSelector: React.FC<ProfileSelectorProps> = ({
                       <div className="flex items-center gap-3">
                         {/* Avatar Badge with real animal illustration */}
                         <div
-                          className="w-12 h-12 rounded-xl overflow-hidden shadow-md border-2 border-slate-700 bg-slate-800 flex-shrink-0"
+                          className="w-12 h-12 rounded-xl overflow-hidden shadow-md border-2 border-slate-700 bg-slate-800 flex-shrink-0 flex items-center justify-center"
+                          style={{ backgroundColor: avatar.avatarColor }}
                         >
                           <img
                             src={avatar.imageSrc}
                             alt={avatar.animal}
                             referrerPolicy="no-referrer"
                             className="w-full h-full object-cover"
+                            onError={(e) => {
+                              (e.target as HTMLElement).style.display = 'none';
+                            }}
                           />
                         </div>
                         <div>
@@ -175,13 +179,17 @@ export const ProfileSelector: React.FC<ProfileSelectorProps> = ({
                       }`}
                     >
                       <div
-                        className="w-12 h-12 rounded-xl overflow-hidden shadow-md border-2 border-slate-700 bg-slate-800 flex-shrink-0"
+                        className="w-12 h-12 rounded-xl overflow-hidden shadow-md border-2 border-slate-700 bg-slate-800 flex-shrink-0 flex items-center justify-center"
+                        style={{ backgroundColor: av.avatarColor }}
                       >
                         <img
                           src={av.imageSrc}
                           alt={av.animal}
                           referrerPolicy="no-referrer"
                           className="w-full h-full object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLElement).style.display = 'none';
+                          }}
                         />
                       </div>
                       <span className="text-[10px] font-bold text-slate-200 mt-1 truncate max-w-full">

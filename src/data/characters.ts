@@ -1,18 +1,18 @@
 import { AvatarInfo, PastryCharacter } from '../types/game';
 
 export const AVATARS: AvatarInfo[] = [
-  { id: 0, name: 'Neko Cyber', animal: 'Chat', badgeBg: 'bg-rose-500', avatarColor: '#f43f5e', instrument: 'Synthé Néon', imageSrc: '/src/assets/images/avatar_cat_neko_1791823670581.jpg' },
-  { id: 1, name: 'Usagi Pop', animal: 'Lapine', badgeBg: 'bg-cyan-400', avatarColor: '#22d3ee', instrument: 'Micro Laser', imageSrc: '/src/assets/images/avatar_bunny_usagi_1791823680229.jpg' },
-  { id: 2, name: 'Shiba Rock', animal: 'Shiba', badgeBg: 'bg-amber-400', avatarColor: '#fbbf24', instrument: 'Guitare Électrique', imageSrc: '/src/assets/images/avatar_shiba_dog_1791823690008.jpg' },
-  { id: 3, name: 'Panda Beat', animal: 'Panda', badgeBg: 'bg-emerald-400', avatarColor: '#34d399', instrument: 'Batterie Fluo', imageSrc: '/src/assets/images/avatar_panda_beat_1791823699556.jpg' },
-  { id: 4, name: 'Kitsune Solo', animal: 'Renarde', badgeBg: 'bg-fuchsia-500', avatarColor: '#d946ef', instrument: 'Guitare Lead', imageSrc: '/src/assets/images/avatar_fox_kitsune_1791823710889.jpg' },
-  { id: 5, name: 'Kuma Bass', animal: 'Ours', badgeBg: 'bg-blue-500', avatarColor: '#3b82f6', instrument: 'Basse 5 Cordes', imageSrc: '/src/assets/images/avatar_bear_kuma_1791823720468.jpg' },
-  { id: 6, name: 'Kero Tempo', animal: 'Grenouille', badgeBg: 'bg-lime-400', avatarColor: '#a3e635', instrument: 'Platines DJ', imageSrc: '/src/assets/images/avatar_frog_kero_1791823730969.jpg' },
-  { id: 7, name: 'Pingu Riff', animal: 'Pingouin', badgeBg: 'bg-indigo-400', avatarColor: '#818cf8', instrument: 'Basse Fretless', imageSrc: '/src/assets/images/avatar_penguin_pingu_1791823741237.jpg' },
-  { id: 8, name: 'Hamu Groove', animal: 'Hamster', badgeBg: 'bg-orange-400', avatarColor: '#fb923c', instrument: 'Baguettes Éclair', imageSrc: '/src/assets/images/avatar_hamster_hamu_1791823751200.jpg' },
-  { id: 9, name: 'Koala Chill', animal: 'Koala', badgeBg: 'bg-teal-400', avatarColor: '#2dd4bf', instrument: 'Ukulélé Cyber', imageSrc: '/src/assets/images/avatar_koala_chill_1791823760517.jpg' },
-  { id: 10, name: 'Loutre Funk', animal: 'Loutre', badgeBg: 'bg-violet-400', avatarColor: '#a78bfa', instrument: 'Keytar Rétro', imageSrc: '/src/assets/images/avatar_otter_funk_1791823771231.jpg' },
-  { id: 11, name: 'Ryu Kawaii', animal: 'Dragon', badgeBg: 'bg-pink-400', avatarColor: '#f472b6', instrument: 'Triangle Cosmique', imageSrc: '/src/assets/images/avatar_dragon_ryu_1791823780040.jpg' },
+  { id: 0, name: 'Neko Cyber', animal: 'Chat', badgeBg: 'bg-rose-500', avatarColor: '#f43f5e', instrument: 'Synthé Néon', imageSrc: '/images/avatar_cat_neko_1791823670581.jpg' },
+  { id: 1, name: 'Usagi Pop', animal: 'Lapine', badgeBg: 'bg-cyan-400', avatarColor: '#22d3ee', instrument: 'Micro Laser', imageSrc: '/images/avatar_bunny_usagi_1791823680229.jpg' },
+  { id: 2, name: 'Shiba Rock', animal: 'Shiba', badgeBg: 'bg-amber-400', avatarColor: '#fbbf24', instrument: 'Guitare Électrique', imageSrc: '/images/avatar_shiba_dog_1791823690008.jpg' },
+  { id: 3, name: 'Panda Beat', animal: 'Panda', badgeBg: 'bg-emerald-400', avatarColor: '#34d399', instrument: 'Batterie Fluo', imageSrc: '/images/avatar_panda_beat_1791823699556.jpg' },
+  { id: 4, name: 'Kitsune Solo', animal: 'Renarde', badgeBg: 'bg-fuchsia-500', avatarColor: '#d946ef', instrument: 'Guitare Lead', imageSrc: '/images/avatar_fox_kitsune_1791823710889.jpg' },
+  { id: 5, name: 'Kuma Bass', animal: 'Ours', badgeBg: 'bg-blue-500', avatarColor: '#3b82f6', instrument: 'Basse 5 Cordes', imageSrc: '/images/avatar_bear_kuma_1791823720468.jpg' },
+  { id: 6, name: 'Kero Tempo', animal: 'Grenouille', badgeBg: 'bg-lime-400', avatarColor: '#a3e635', instrument: 'Platines DJ', imageSrc: '/images/avatar_frog_kero_1791823730969.jpg' },
+  { id: 7, name: 'Pingu Riff', animal: 'Pingouin', badgeBg: 'bg-indigo-400', avatarColor: '#818cf8', instrument: 'Basse Fretless', imageSrc: '/images/avatar_penguin_pingu_1791823741237.jpg' },
+  { id: 8, name: 'Hamu Groove', animal: 'Hamster', badgeBg: 'bg-orange-400', avatarColor: '#fb923c', instrument: 'Baguettes Éclair', imageSrc: '/images/avatar_hamster_hamu_1791823751200.jpg' },
+  { id: 9, name: 'Koala Chill', animal: 'Koala', badgeBg: 'bg-teal-400', avatarColor: '#2dd4bf', instrument: 'Ukulélé Cyber', imageSrc: '/images/avatar_koala_chill_1791823760517.jpg' },
+  { id: 10, name: 'Loutre Funk', animal: 'Loutre', badgeBg: 'bg-violet-400', avatarColor: '#a78bfa', instrument: 'Keytar Rétro', imageSrc: '/images/avatar_otter_funk_1791823771231.jpg' },
+  { id: 11, name: 'Ryu Kawaii', animal: 'Dragon', badgeBg: 'bg-pink-400', avatarColor: '#f472b6', instrument: 'Triangle Cosmique', imageSrc: '/images/avatar_dragon_ryu_1791823780040.jpg' },
 ];
 
 export const PASTRY_CHARACTERS: PastryCharacter[] = [

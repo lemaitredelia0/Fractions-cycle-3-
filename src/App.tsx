@@ -161,12 +161,18 @@ export default function App() {
           title="Clique pour changer de profil ou d'avatar"
         >
           {/* Much Bigger Avatar Image */}
-          <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-[3px] border-white shadow-lg bg-slate-800 flex-shrink-0 group-hover:scale-105 transition-transform">
+          <div
+            className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-[3px] border-white shadow-lg bg-slate-800 flex-shrink-0 group-hover:scale-105 transition-transform flex items-center justify-center"
+            style={{ backgroundColor: activeAvatar.avatarColor }}
+          >
             <img
               src={activeAvatar.imageSrc}
               alt={activeAvatar.animal}
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover"
+              onError={(e) => {
+                (e.target as HTMLElement).style.display = 'none';
+              }}
             />
           </div>
 
