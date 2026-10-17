@@ -105,36 +105,43 @@ export const LevelSelector: React.FC<LevelSelectorProps> = ({
               key={w.id}
               type="button"
               onClick={() => onPlayLevel(w.id)}
-              className={`group p-3.5 sm:p-5 rounded-3xl border-[4px] cursor-pointer transition-all bg-gradient-to-b ${w.colorBg} ${w.colorBorder} ${w.shadow3D} flex flex-col justify-between text-left hover:brightness-115 active:translate-y-1.5 active:shadow-[0_2px_0_rgba(0,0,0,0.8)]`}
+              className={`group p-3 sm:p-4 rounded-3xl border-[3.5px] cursor-pointer transition-all bg-gradient-to-b ${w.colorBg} ${w.colorBorder} ${w.shadow3D} flex flex-col justify-between text-left hover:brightness-115 active:translate-y-1.5 active:shadow-[0_2px_0_rgba(0,0,0,0.8)]`}
             >
               <div>
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-1.5 sm:mb-2">
                   <span className="text-3xl sm:text-4xl drop-shadow-md group-hover:scale-110 transition-transform">
                     {w.icon}
                   </span>
-                  <span className="text-xs sm:text-sm font-black px-3 py-1 rounded-full bg-slate-950 border-2 border-white/20 text-white font-mono shadow-sm">
+                  <span className="text-xs sm:text-sm font-black px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-slate-950 border-2 border-white/20 text-white font-mono shadow-sm">
                     {w.id}
                   </span>
                 </div>
-                <h4 className="text-lg sm:text-xl font-black text-white tracking-tight leading-tight group-hover:text-cyan-300 transition-colors">
+                <h4 className="text-base sm:text-lg md:text-xl font-black text-white tracking-tight leading-tight group-hover:text-cyan-300 transition-colors">
                   {w.title}
                 </h4>
-                <p className="text-xs text-slate-300 mt-1 font-semibold">{w.theme}</p>
+                <p className="text-[11px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1 font-semibold line-clamp-1">{w.theme}</p>
               </div>
 
               {/* Bottom: Stars & Big Instant Play Button */}
-              <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
-                <div className="flex items-center gap-1 text-yellow-400 text-sm">
-                  {[1, 2, 3].map((s) => (
-                    <Star
-                      key={s}
-                      className={`w-4 h-4 ${s <= stars ? 'fill-yellow-400 text-yellow-400' : 'text-slate-700'}`}
-                    />
-                  ))}
+              <div className="mt-3 pt-2 border-t border-white/10 flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-yellow-400 shrink-0">
+                    {[1, 2, 3].map((s) => (
+                      <Star
+                        key={s}
+                        className={`w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] ${
+                          s <= stars ? 'fill-yellow-400 text-yellow-400 drop-shadow-[0_0_6px_rgba(250,204,21,0.6)]' : 'text-slate-700 stroke-slate-600'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-[11px] sm:text-xs font-mono font-bold text-yellow-400/90 drop-shadow">
+                    {stars}/3
+                  </span>
                 </div>
 
-                <div className={`flex items-center gap-1.5 px-3 py-1 rounded-xl font-black text-xs sm:text-sm ${w.btnBg} shadow-md group-hover:scale-105 transition-transform`}>
-                  <Play className="w-3.5 h-3.5 fill-current" />
+                <div className={`w-full flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-xl font-black text-xs sm:text-sm ${w.btnBg} shadow-md group-hover:scale-[1.02] active:scale-95 transition-transform`}>
+                  <Play className="w-3.5 h-3.5 fill-current shrink-0" />
                   <span>JOUER</span>
                 </div>
               </div>
