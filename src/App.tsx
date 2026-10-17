@@ -11,7 +11,6 @@ import { LevelSelector } from './components/LevelSelector';
 import { CollectionModal } from './components/CollectionModal';
 import { ProfileSelector } from './components/ProfileSelector';
 import { ArcadeBackground } from './components/ArcadeBackground';
-import { DevPreviewModal } from './components/DevPreviewModal';
 import { rockSynth } from './audio/rockSynth';
 import { Volume2, VolumeX } from 'lucide-react';
 
@@ -134,19 +133,16 @@ export default function App() {
 
   if (isPlaying) {
     return (
-      <>
-        <RhythmGame
-          level={activeProfile.selectedLevel}
-          profile={activeProfile}
-          onUpdateProfile={updateActiveProfile}
-          onExitGame={() => setIsPlaying(false)}
-          onOpenShop={() => {
-            setIsPlaying(false);
-            setShowCollection(true);
-          }}
-        />
-        <DevPreviewModal />
-      </>
+      <RhythmGame
+        level={activeProfile.selectedLevel}
+        profile={activeProfile}
+        onUpdateProfile={updateActiveProfile}
+        onExitGame={() => setIsPlaying(false)}
+        onOpenShop={() => {
+          setIsPlaying(false);
+          setShowCollection(true);
+        }}
+      />
     );
   }
 
@@ -258,8 +254,6 @@ export default function App() {
           onClose={() => setShowProfiles(false)}
         />
       )}
-
-      <DevPreviewModal />
     </div>
   );
 }
