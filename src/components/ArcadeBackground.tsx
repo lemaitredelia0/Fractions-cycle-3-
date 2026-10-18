@@ -1,18 +1,28 @@
 import React from 'react';
+import { SchoolLevel } from '../types/game';
+import { getLevelBackground } from '../data/levelBackgrounds';
 
-export const ArcadeBackground: React.FC = () => {
+interface ArcadeBackgroundProps {
+  level?: SchoolLevel;
+  imageSrc?: string;
+}
+
+export const ArcadeBackground: React.FC<ArcadeBackgroundProps> = ({ level, imageSrc }) => {
+  const bgImage = imageSrc || getLevelBackground(level);
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-      {/* 1. Base High-Definition Anime Concert Artwork */}
+      {/* 1. Base High-Definition Themed Anime Artwork */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-85 transition-opacity duration-700 scale-105"
+        key={bgImage}
+        className="absolute inset-0 bg-cover bg-center opacity-90 transition-all duration-700 scale-105 animate-in fade-in duration-500"
         style={{
-          backgroundImage: `url('/images/colorful_addictive_neon_stage_1791396853884.jpg')`,
+          backgroundImage: `url('${bgImage}')`,
         }}
       />
 
       {/* 2. Vibrant Color Overlays (Addictive Neon Gradient Bloom) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-slate-950/70" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-slate-950/50" />
 
       {/* Top-left Pink Neon Flare */}
       <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-rose-500/30 blur-3xl animate-laser-glow" />

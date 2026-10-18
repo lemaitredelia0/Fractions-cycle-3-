@@ -58,6 +58,7 @@ export default function App() {
   const [showCollection, setShowCollection] = useState<boolean>(false);
   const [showProfiles, setShowProfiles] = useState<boolean>(false);
   const [soundMuted, setSoundMuted] = useState<boolean>(false);
+  const [hoveredLevel, setHoveredLevel] = useState<SchoolLevel | null>(null);
 
   const activeProfile =
     profiles.find((p) => p.id === activeProfileId) || profiles[0] || DEFAULT_PROFILES[0];
@@ -148,8 +149,8 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-rose-500 selection:text-white font-display overflow-hidden">
-      {/* Ultra-Colorful Addictive Anime Arcade Background */}
-      <ArcadeBackground />
+      {/* Dynamic Themed Arcade Background (changes on level hover or selection) */}
+      <ArcadeBackground level={hoveredLevel || activeProfile.selectedLevel} />
 
       {/* 3D Neo-Arcade Top Bar */}
       <header className="flex items-center justify-between px-3 sm:px-6 py-3 border-b-2 border-slate-900 bg-slate-950/95 backdrop-blur-md sticky top-0 z-30 gap-3">
@@ -221,6 +222,7 @@ export default function App() {
         {/* Worlds: 1-Click Direct Play */}
         <LevelSelector
           profile={activeProfile}
+          onHoverLevel={setHoveredLevel}
           onPlayLevel={(lvl) => {
             rockSynth.init();
             updateActiveProfile((prev) => ({ ...prev, selectedLevel: lvl }));

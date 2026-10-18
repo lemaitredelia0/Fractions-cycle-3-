@@ -316,10 +316,17 @@ export const RhythmGame: React.FC<RhythmGameProps> = ({
   const star3Unlocked = score >= 2500;
   const starProgress = Math.min(100, (score / 2500) * 100);
 
+  // Layout mode: text-only calculation question vs visual cake question
+  const isTextOnly = !currentQuestion.visual && !currentQuestion.visualQuantity;
+  const isCalculation = currentQuestion.prompt.toLowerCase().startsWith('calcule');
+  const calculationFormula = isCalculation
+    ? currentQuestion.prompt.replace(/^calcule\s*:\s*/i, '')
+    : null;
+
   return (
     <div className="relative w-full h-[100dvh] bg-slate-950 text-slate-100 flex flex-col justify-between overflow-hidden select-none font-display">
-      {/* Ultra-Colorful Addictive Anime Arcade Background */}
-      <ArcadeBackground />
+      {/* Ultra-Colorful Themed Anime Arcade Background */}
+      <ArcadeBackground level={level} />
 
       {/* Discrete 3px top time progress line */}
       <div className="relative z-20 w-full h-1.5 bg-slate-900 overflow-hidden">
@@ -401,10 +408,32 @@ export const RhythmGame: React.FC<RhythmGameProps> = ({
         ref={centerRef}
         className="relative z-20 w-full max-w-4xl mx-auto px-4 flex-1 flex flex-col items-center justify-center min-h-0 text-center overflow-hidden"
       >
-        {/* Consigne */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight drop-shadow-[0_4px_18px_rgba(0,0,0,0.85)] mb-1 sm:mb-2 px-2 select-none shrink-0">
-          {currentQuestion.prompt}
-        </h1>
+        {/* Consigne: Huge arcade display for text/calculation questions */}
+        {isTextOnly ? (
+          <div className="w-full max-w-xl mx-auto px-2 my-auto flex flex-col items-center justify-center animate-in fade-in zoom-in-95 duration-200">
+            <div className="w-full p-5 sm:p-7 rounded-3xl bg-slate-900/90 border-[3.5px] border-cyan-400/60 shadow-[0_8px_0_#0e7490,0_0_35px_rgba(6,182,212,0.35)] backdrop-blur-md flex flex-col items-center text-center">
+              {isCalculation ? (
+                <>
+                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/90 border border-cyan-400/50 text-cyan-300 text-xs sm:text-sm font-black uppercase tracking-wider mb-2.5 sm:mb-3 shadow-inner">
+                    <span>⚡</span>
+                    <span>DÉFI CALCUL</span>
+                  </div>
+                  <div className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] select-none">
+                    {calculationFormula}
+                  </div>
+                </>
+              ) : (
+                <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] select-none">
+                  {currentQuestion.prompt}
+                </h1>
+              )}
+            </div>
+          </div>
+        ) : (
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight drop-shadow-[0_4px_18px_rgba(0,0,0,0.85)] mb-1 sm:mb-2 px-2 select-none shrink-0">
+            {currentQuestion.prompt}
+          </h1>
+        )}
 
         {/* GÂTEAU DE RÉFÉRENCE GÉANT SANS AUCUN ENCADRÉ (FLOTTANT & TAILLE MAXIMALE) */}
         {currentQuestion.visual && (
@@ -506,9 +535,13 @@ export const RhythmGame: React.FC<RhythmGameProps> = ({
         )}
       </div>
 
-      {/* Bottom Zone: 4 PROPOSITIONS MAXIMALES (ZÉRO ICÔNE, TAILLE MAXIMALE) */}
-      <div className="relative z-20 w-full max-w-4xl mx-auto px-3 pb-3 pt-1 shrink-0">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5">
+      {/* Bottom Zone: 4 PROPOSITIONS (ELEVATED & ENLARGED FOR TEXT QUESTIONS) */}
+      <div
+        className={`relative z-20 w-full max-w-4xl mx-auto px-3 shrink-0 ${
+          isTextOnly ? 'pb-8 sm:pb-12 pt-2 mb-3 sm:mb-5' : 'pb-3 pt-1'
+        }`}
+      >
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
           {currentQuestion.options.map((option: LaneOption, laneIdx: number) => {
             const lane = LANE_STYLES[laneIdx];
             const isAnswered = answeredState !== null && answeredState.laneIndex === laneIdx;
@@ -521,7 +554,11 @@ export const RhythmGame: React.FC<RhythmGameProps> = ({
                 key={option.id}
                 type="button"
                 onClick={() => handleLaneSelect(laneIdx)}
-                className={`relative group w-full min-h-[95px] sm:min-h-[115px] md:min-h-[135px] p-2 sm:p-3 rounded-2xl sm:rounded-3xl border-[3.5px] bg-gradient-to-b transition-all cursor-pointer flex items-center justify-center ${
+                className={`relative group w-full ${
+                  isTextOnly
+                    ? 'min-h-[120px] sm:min-h-[145px] md:min-h-[165px]'
+                    : 'min-h-[95px] sm:min-h-[115px] md:min-h-[135px]'
+                } p-2 sm:p-3 rounded-2xl sm:rounded-3xl border-[3.5px] bg-gradient-to-b transition-all cursor-pointer flex items-center justify-center ${
                   isSuccess
                     ? 'border-emerald-400 bg-gradient-to-b from-emerald-600 via-emerald-800 to-slate-950 shadow-[0_8px_0_#065f46,0_0_45px_rgba(52,211,153,0.9)] scale-105 z-30'
                     : isFailure
@@ -548,7 +585,13 @@ export const RhythmGame: React.FC<RhythmGameProps> = ({
                       )}
                     </div>
                   ) : (
-                    <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white text-center tracking-tight leading-tight px-1 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+                    <span
+                      className={`${
+                        isTextOnly
+                          ? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl'
+                          : 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl'
+                      } font-black text-white text-center tracking-tight leading-tight px-1 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]`}
+                    >
                       {option.text}
                     </span>
                   )}
